@@ -11,7 +11,6 @@ function App() {
       <div className="App">
         <NavBar accounts={accounts} setAccounts={setAccounts} />
         <MainMint accounts={accounts} setAccounts={setAccounts} />
-        FUCK1
       </div>
       <div className="moving-background"></div>
     </div>
