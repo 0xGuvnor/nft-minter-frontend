@@ -7,10 +7,19 @@ import networkMapping from "../constants/networkMapping.json";
 const MainMint = ({ accounts, setAccounts }) => {
   const [mintAmount, setMintAmount] = useState(1);
   const isConnected = Boolean(accounts[0]);
-  const chainId = window.ethereum.networkVersion.toString() || 0;
+  // const chainId = window.ethereum.networkVersion.toString() || 0;
+  const chainId = getChainId();
   const roboPunksAddress = isConnected
     ? networkMapping[chainId]["RoboPunksNFT"][0]
     : "";
+
+  function getChainId() {
+    try {
+      return window.ethereum.networkVersion.toString();
+    } catch (e) {
+      return 0;
+    }
+  }
 
   async function handleMint() {
     if (window.ethereum) {
@@ -122,7 +131,7 @@ const MainMint = ({ accounts, setAccounts }) => {
             marginTop="70px"
             fontSize="30px"
             letterSpacing="-5.5%"
-            fontfamily="VT323"
+            fontFamily="VT323"
             textShadow="0 3px #000000"
             color="#D6517D"
           >
