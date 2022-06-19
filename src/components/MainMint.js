@@ -7,7 +7,7 @@ import networkMapping from "../constants/networkMapping.json";
 const MainMint = ({ accounts, setAccounts }) => {
   const [mintAmount, setMintAmount] = useState(1);
   const isConnected = Boolean(accounts[0]);
-  const chainId = window.ethereum.networkVersion.toString();
+  const chainId = window.ethereum.networkVersion.toString() || 0;
   const roboPunksAddress = isConnected
     ? networkMapping[chainId]["RoboPunksNFT"][0]
     : "";
